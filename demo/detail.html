@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết sản phẩm - KeyGear Custom</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- KẾT THÚC TOP MARQUEE (Giữ nguyên thẻ div top-marquee phía trên) -->
+
+    <!-- ================= HEADER 2 TẦNG CHUYÊN NGHIỆP ================= -->
+    <div class="ecommerce-header">
+        <!-- Tầng 1: Logo + Tìm kiếm + Giỏ hàng -->
+        <div class="bg-dark py-3">
+            <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap flex-lg-nowrap">
+                
+                <!-- Bên trái: Logo -->
+                <a class="navbar-brand fw-bold fs-3 text-white text-decoration-none" href="index.html">
+                    ⌨️ KEY<span class="text-warning">GEAR</span>
+                </a>
+
+                <!-- Ở giữa: Thanh tìm kiếm siêu to khổng lồ (Input Form) -->
+                <div class="search-bar-wrapper flex-grow-1 mx-lg-4">
+                    <div class="input-group">
+                        <input type="text" id="txtSearch" class="form-control search-input" 
+                               placeholder="Tìm kiếm bàn phím Aula, switch Leobog, keycap..." 
+                               onkeyup="searchProducts()">
+                        <button class="btn search-btn fw-bold" type="button" onclick="searchProducts()">
+                            🔍 Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bên phải: Nút giỏ hàng -->
+                <a href="cart.html" class="btn btn-outline-warning fw-bold fs-6 d-flex align-items-center gap-2 px-3 py-2 border-2 rounded-3 text-decoration-none">
+                    🛒 <span class="d-none d-md-inline">Giỏ hàng</span> 
+                    <span id="cartCount" class="badge bg-warning text-dark rounded-pill fs-6 px-2">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tầng 2: Thanh Danh mục (Menu) -->
+        <div class="sub-navbar d-none d-lg-block">
+            <div class="container">
+                <!-- Đổi thành justify-content-center để canh giữa toàn bộ menu -->
+                <ul class="nav d-flex justify-content-center align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('all')">Tất cả sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('keyboard')">Bàn phím cơ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('switch')">Switch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('keycap')">Keycap</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ================= KẾT THÚC HEADER ================= -->
+
+    <!-- BẮT ĐẦU HEADER HERO BANNER (Giữ nguyên các thẻ bên dưới) -->
+
+    <section class="py-5 container">
+        <a href="index.html" class="btn btn-outline-secondary mb-4">← Quay lại trang chủ</a>
+        
+        <div class="detail-box p-4 rounded shadow-sm bg-white">
+            <div class="row g-4">
+                <!-- Cột trái: Hình ảnh -->
+                <div class="col-md-5">
+                    <div class="main-img-wrap mb-3 text-center border rounded">
+                        <img id="detailMainImg" src="" alt="Sản phẩm lớn" class="img-fluid p-2">
+                    </div>
+                    <div class="d-flex justify-content-start gap-2 flex-wrap" id="detailThumbnails"></div>
+                </div>
+
+                <!-- Cột phải: Đặt hàng -->
+                <div class="col-md-7">
+                    <h4 id="detailTitle" class="fw-normal text-dark mb-3 lh-base" style="font-size: 20px;">Tên SP</h4>
+                    
+                    <!-- Khối Giá tiền nền xám -->
+                    <div class="price-box p-3 mb-4 rounded" style="background-color: #fafafa;">
+                        <span id="detailPrice" class="fs-2 fw-bold text-danger me-3">0đ</span>
+                        <span id="detailOldPrice" class="text-muted text-decoration-line-through fs-5">0đ</span>
+                    </div>
+                    
+                    <!-- Box Phân loại -->
+                    <div id="variantSelection" class="mb-4">
+                        <div class="mb-3 d-flex align-items-start">
+                            <span class="text-secondary me-3 mt-2" style="width: 80px;">Mẫu:</span>
+                            <div id="modelOptions" class="d-flex flex-wrap gap-2 flex-grow-1"></div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <span class="text-secondary me-3 mt-2" style="width: 80px;">Kiểu mod:</span>
+                            <div id="switchOptions" class="d-flex flex-wrap gap-2 flex-grow-1"></div>
+                        </div>
+                    </div>
+
+                    <!-- Chọn số lượng (Đã fix lỗi lặp chữ) -->
+                    <!-- Chọn số lượng (Đã fix lỗi lặp chữ) -->
+                    <div class="mb-4 d-flex align-items-center">
+                        <span class="text-secondary me-3" style="width: 80px;">Số lượng:</span>
+                        <div class="qty-wrapper">
+                            <button class="qty-btn" type="button" onclick="changeDetailQty(-1)">−</button>
+                            <input type="number" id="detailQty" class="qty-input" value="1" min="1" readonly>
+                            <button class="qty-btn" type="button" onclick="changeDetailQty(1)">+</button>
+                        </div>
+                        <!-- THÊM DÒNG NÀY: Nơi hiển thị trạng thái tồn kho -->
+                        <span id="stockStatus" class="ms-4 fw-bold fst-italic" style="color: #f57c00; font-size: 15px;"></span>
+                    </div>
+
+                    <!-- Khu vực nút hành động -->
+                    <!-- 1. Trạng thái bình thường (Còn hàng) -->
+                    <div id="actionButtonsNormal" class="d-flex gap-3 mt-4">
+                        <button class="btn btn-add-cart w-50 py-3 fw-bold fs-5" onclick="addToCart(false)">Thêm giỏ hàng</button>
+                        <button class="btn btn-buy-now w-50 py-3 fw-bold fs-5 text-white" onclick="addToCart(true)">Mua ngay</button>
+                    </div>
+                    
+                    <!-- 2. Trạng thái Hết hàng (Đang ẩn bằng class d-none) -->
+                    <div id="actionButtonsOutStock" class="d-flex gap-3 mt-4 d-none">
+                        <button class="btn btn-secondary w-100 py-3 fw-bold fs-5 text-uppercase" disabled style="cursor: not-allowed; background-color: #ccc; border: none; color: #666;">
+                            Đã hết hàng
+                        </button>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Dòng kẻ ngang phân cách -->
+            <!-- Dòng kẻ ngang phân cách -->
+            <hr class="my-5 border-secondary">
+
+            <!-- ================= CẬP NHẬT MỚI: MÔ TẢ, BẢNG THÔNG SỐ & HASHTAG ================= -->
+            <div class="row">
+                <div class="col-12 bg-white p-4 rounded border">
+                    
+                    <!-- Khối bọc nội dung có giới hạn chiều cao (content-wrapper) -->
+                    <div id="detailContentBox" class="content-wrapper text-dark">
+                        
+                        <h5 class="fw-bold mb-3 text-uppercase">Mô tả chi tiết</h5>
+                        <p id="detailDesc" class="lh-lg mb-4"></p>
+                        
+                        <h5 class="fw-bold mb-3 text-uppercase">Thông số kỹ thuật chi tiết</h5>
+                        <!-- Bảng HTML kẻ ô chi tiết -->
+                        <table class="table table-bordered table-striped" style="max-width: 800px;">
+                            <tbody id="detailSpecsTable">
+                                <!-- JS sẽ tự động đổ các dòng thông số vào đây -->
+                            </tbody>
+                        </table>
+
+                        <!-- Khu vực Hashtag -->
+                        <p id="detailHashtags" class="mt-4 mb-2 text-primary" style="word-wrap: break-word;"></p>
+                        
+                        <!-- Lớp sương mù che mờ (CSS gradient) -->
+                        <div class="content-overlay"></div>
+                    </div>
+
+                    <!-- Nút bấm ẩn/hiện nội dung (JS onclick) -->
+                    <div class="text-center mt-3">
+                        <button id="btnToggleContent" class="btn-toggle-content" onclick="toggleDetailContent()">
+                            Xem thêm ⬇
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- ================= KẾT THÚC CẬP NHẬT ================= -->
+            
+        </div>
+    </section>
+<!-- ================= FOOTER THÔNG TIN LIÊN HỆ ================= -->
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Cột trái: Thông tin Cửa hàng -->
+                <div class="col-md-6">
+                    <h2 class="footer-logo mb-3">PHUCKEYBOARD</h2>
+                    <ul class="list-unstyled footer-contact-list mb-4">
+                        <li class="mb-3 d-flex align-items-start">
+                            <span class="footer-icon text-danger me-2">📞</span>
+                            <span>0383031070</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <span class="footer-icon text-danger me-2">🏪</span>
+                            <span><strong>ĐỊA CHỈ:</strong> Đường Khuông Việt, Phường Phú Trung, Quận Tân Phú, Thành phố Hồ Chí Minh</span>
+                        </li>
+                    </ul>
+                    
+                    <h5 class="footer-heading mb-3">GIỚI THIỆU</h5>
+                    <p class="text-muted small" style="max-width: 90%;"><b>Ngô Hữu Phúc</b> - <b>241A010368</b> - Học phần <b>Lập Trình Web</b></p>
+                    <p class="text-muted small" style="max-width: 90%;">GVHD: <b>Nguyễn Quang Tấn</b> - LHP: <b>INT4407</b></p>
+                </div>
+
+                <!-- Cột phải: Mạng xã hội & Hỗ trợ -->
+                <div class="col-md-6">
+                    <h5 class="footer-heading mb-4">THÔNG TIN LIÊN HỆ</h5>
+                    <ul class="list-unstyled footer-contact-list">
+                        <li class="mb-3 d-flex align-items-center">
+                            <!-- Dùng thẻ img gọi trực tiếp file ảnh bạn vừa tải về -->
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="facebook.png" alt="Facebook" width="26" height="25">
+                            </span>
+                            <a href="https://www.facebook.com/share/1CvAzRfxAS/" target="_blank" class="footer-link">https://www.facebook.com/share/1CvAzRfxAS/</a>
+                        </li>
+                        
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="zalo.png" alt="Zalo" width="36" height="26">
+                            </span>
+                            <span>0383031070</span>
+                        </li>
+                        
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="email.png" alt="Email" width="36" height="30">
+                            </span>
+                            <a href="mailto:ngohuuphuc151@gmail.com" class="footer-link">ngohuuphuc151@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <!-- Dòng kẻ ngang phân cách -->
+            <hr class="footer-divider">
+
+            <!-- Copyright -->
+            <!-- Đã đổi text-start thành text-center -->
+            <div class="footer-copyright text-center">
+                © 2026 Học phần Lập Trình Web. Dự án web Bàn Phím Cơ. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- ================= KẾT THÚC FOOTER ================= -->
+
+    <a href="#" id="scrollToTop" class="scroll-top-btn" style="display: flex;">▲</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

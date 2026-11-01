@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - KeyGear Custom</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-marquee">
+        <div class="container text-center">
+            🔥 KHUYẾN MÃI ĐẶC BIỆT: Giảm tới 30% các dòng bàn phím cơ Custom - Tặng kèm Switch Puller & Lube sẵn! 🔥
+        </div>
+    </div>
+
+    <!-- KẾT THÚC TOP MARQUEE (Giữ nguyên thẻ div top-marquee phía trên) -->
+
+    <!-- ================= HEADER 2 TẦNG CHUYÊN NGHIỆP ================= -->
+    <div class="ecommerce-header">
+        <!-- Tầng 1: Logo + Tìm kiếm + Giỏ hàng -->
+        <div class="bg-dark py-3">
+            <div class="container d-flex align-items-center justify-content-between gap-3 flex-wrap flex-lg-nowrap">
+                
+                <!-- Bên trái: Logo -->
+                <a class="navbar-brand fw-bold fs-3 text-white text-decoration-none" href="index.html">
+                    ⌨️ KEY<span class="text-warning">GEAR</span>
+                </a>
+
+                <!-- Ở giữa: Thanh tìm kiếm siêu to khổng lồ (Input Form) -->
+                <div class="search-bar-wrapper flex-grow-1 mx-lg-4">
+                    <div class="input-group">
+                        <input type="text" id="txtSearch" class="form-control search-input" 
+                               placeholder="Tìm kiếm bàn phím Aula, switch Leobog, keycap..." 
+                               onkeyup="searchProducts()">
+                        <button class="btn search-btn fw-bold" type="button" onclick="searchProducts()">
+                            🔍 Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Bên phải: Nút giỏ hàng -->
+                <a href="cart.html" class="btn btn-outline-warning fw-bold fs-6 d-flex align-items-center gap-2 px-3 py-2 border-2 rounded-3 text-decoration-none">
+                    🛒 <span class="d-none d-md-inline">Giỏ hàng</span> 
+                    <span id="cartCount" class="badge bg-warning text-dark rounded-pill fs-6 px-2">0</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tầng 2: Thanh Danh mục (Menu) -->
+        <div class="sub-navbar d-none d-lg-block">
+            <div class="container">
+                <!-- Đổi thành justify-content-center để canh giữa toàn bộ menu -->
+                <ul class="nav d-flex justify-content-center align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('all')">Tất cả sản phẩm</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('keyboard')">Bàn phím cơ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('switch')">Switch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link fw-bold text-uppercase fs-6" href="index.html" onclick="filterCategory('keycap')">Keycap</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- ================= KẾT THÚC HEADER ================= -->
+
+    <!-- BẮT ĐẦU HEADER HERO BANNER (Giữ nguyên các thẻ bên dưới) -->
+
+    <!-- ================= HERO BANNER BẰNG ẢNH ================= -->
+    <header class="main-image-banner my-3">
+        <div class="container">
+            <!-- Thay tên "banner-chinh.jpg" bằng đúng tên file ảnh của bạn[cite: 254] -->
+            <img src="banner.jpg" alt="Banner Khuyến Mãi KeyGear" class="img-fluid w-100 rounded shadow-sm" style="object-fit: cover;">
+        </div>
+    </header>
+    <!-- ================= KẾT THÚC BANNER ================= -->
+
+    <section class="py-5 container">
+        <!-- Đã đổi tên và thêm ID dynamicSectionTitle để tự động đổi chữ khi bấm menu -->
+        <h2 id="dynamicSectionTitle" class="section-title fw-bold mb-4">BÀN PHÍM CƠ</h2>
+        
+        <!-- Thanh lọc thương hiệu kiểu mới -->
+        <div class="brand-filter-bar mb-4 p-3 rounded d-flex align-items-center gap-3 flex-wrap">
+            <span class="fw-bold text-dark me-2" style="font-size: 15px;">🏷️ Lọc thương hiệu:</span>
+            <!-- Nút Tất cả mặc định có class 'active' -->
+            <button class="brand-filter-btn active" onclick="filterBrand('all', this)">Tất Cả</button>
+            <button class="brand-filter-btn" onclick="filterBrand('Aula', this)">AULA</button>
+            <button class="brand-filter-btn" onclick="filterBrand('Leobog', this)">LEOBOG</button>
+            <button class="brand-filter-btn" onclick="filterBrand('Lingbao', this)">LINGBAO</button>
+            <button class="brand-filter-btn" onclick="filterBrand('Xinmeng', this)">XINMENG</button>
+            <button class="brand-filter-btn" onclick="filterBrand('Weikav', this)">WEIKAV</button>
+        </div>
+        
+        <!-- Vùng hiển thị sản phẩm -->
+        <div class="row g-4" id="productList"></div>
+    </section>
+
+    <!-- ================= FOOTER THÔNG TIN LIÊN HỆ ================= -->
+    <footer class="custom-footer">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Cột trái: Thông tin Cửa hàng -->
+                <div class="col-md-6">
+                    <h2 class="footer-logo mb-3">PHUCKEYBOARD</h2>
+                    <ul class="list-unstyled footer-contact-list mb-4">
+                        <li class="mb-3 d-flex align-items-start">
+                            <span class="footer-icon text-danger me-2">📞</span>
+                            <span>0383031070</span>
+                        </li>
+                        <li class="mb-3 d-flex align-items-start">
+                            <span class="footer-icon text-danger me-2">🏪</span>
+                            <span><strong>ĐỊA CHỈ:</strong> Đường Khuông Việt, Phường Phú Trung, Quận Tân Phú, Thành phố Hồ Chí Minh</span>
+                        </li>
+                    </ul>
+                    
+                    <h5 class="footer-heading mb-3">GIỚI THIỆU</h5>
+                    <p class="text-muted small" style="max-width: 90%;"><b>Ngô Hữu Phúc</b> - <b>241A010368</b> - Học phần <b>Lập Trình Web</b></p>
+                    <p class="text-muted small" style="max-width: 90%;">GVHD: <b>Nguyễn Quang Tấn</b> - LHP: <b>INT4407</b></p>
+                </div>
+
+                <!-- Cột phải: Mạng xã hội & Hỗ trợ -->
+                <div class="col-md-6">
+                    <h5 class="footer-heading mb-4">THÔNG TIN LIÊN HỆ</h5>
+                    <ul class="list-unstyled footer-contact-list">
+                        <li class="mb-3 d-flex align-items-center">
+                            <!-- Dùng thẻ img gọi trực tiếp file ảnh bạn vừa tải về -->
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="facebook.png" alt="Facebook" width="26" height="25">
+                            </span>
+                            <a href="https://www.facebook.com/share/1CvAzRfxAS/" target="_blank" class="footer-link">https://www.facebook.com/share/1CvAzRfxAS/</a>
+                        </li>
+                        
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="zalo.png" alt="Zalo" width="36" height="26">
+                            </span>
+                            <span>0383031070</span>
+                        </li>
+                        
+                        <li class="mb-3 d-flex align-items-center">
+                            <span class="footer-icon me-3 d-flex align-items-center justify-content-center">
+                                <img src="email.png" alt="Email" width="36" height="30">
+                            </span>
+                            <a href="mailto:ngohuuphuc151@gmail.com" class="footer-link">ngohuuphuc151@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <!-- Dòng kẻ ngang phân cách -->
+            <hr class="footer-divider">
+
+            <!-- Copyright -->
+            <!-- Đã đổi text-start thành text-center -->
+            <div class="footer-copyright text-center">
+                © 2026 Học phần Lập Trình Web. Dự án web Bàn Phím Cơ. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- ================= KẾT THÚC FOOTER ================= -->
+
+    <a href="#" id="scrollToTop" class="scroll-top-btn" style="display: flex;">▲</a>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

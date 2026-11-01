@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; background-color: #f8f9fa; color: #333; }
+
+/* Header & Banner */
+.top-marquee { background-color: #ffc107; color: #000; padding: 8px 0; font-size: 14px; font-weight: bold; border-bottom: 1px solid #e0a800; }
+.sticky-header { position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+/* Đã sửa màu nền Banner để chữ màu trắng nổi bật */
+.section-title { border-left: 5px solid #ffc107; padding-left: 12px; }
+.brand-filter-bar { background-color: #fff; border: 1px solid #dee2e6; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+
+/* Product Card */
+.product-card { background-color: #fff; border: 1px solid #e9ecef; border-radius: 8px; padding: 16px; height: 100%; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: #ffc107; }
+.discount-badge { position: absolute; top: 12px; right: 12px; background-color: #dc3545; color: #fff; font-weight: bold; font-size: 12px; padding: 4px 8px; border-radius: 4px; z-index: 2; }
+.brand-tag { position: absolute; top: 12px; left: 12px; background-color: #212529; color: #ffc107; font-weight: bold; font-size: 11px; padding: 3px 8px; border-radius: 4px; z-index: 2; }
+.product-img-wrapper { height: 200px; overflow: hidden; border-radius: 6px; margin-bottom: 16px; background-color: #fff; display: flex; align-items: center; justify-content: center; }
+.product-img-wrapper img { width: 100%; height: 100%; object-fit: contain; cursor: pointer; transition: transform 0.3s ease; }
+.product-card:hover .product-img-wrapper img { transform: scale(1.05); }
+.product-title { font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 8px; cursor: pointer; }
+.product-title:hover { color: #ff5722; }
+
+/* Detail Box & Cart */
+.detail-box, .cart-box, .order-box { background-color: #fff; border: 1px solid #dee2e6; }
+.main-img-wrap { height: 380px; background-color: #fff; border: 1px solid #dee2e6; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 10px; }
+.main-img-wrap img { max-height: 100%; width: 100%; object-fit: contain; }
+.thumb-img { width: 70px; height: 70px; object-fit: cover; border: 2px solid #ddd; border-radius: 6px; cursor: pointer; opacity: 0.6; transition: all 0.2s; }
+.thumb-img:hover, .thumb-img.active { border-color: #ff5722; opacity: 1; transform: scale(1.05); }
+
+/* Giao diện nút chọn Phân loại (Mẫu, Switch) */
+/* =========================================================
+   Giao diện nút chọn Phân loại (Mẫu, Switch) chuẩn Shopee
+   ========================================================= */
+.variant-btn { 
+    border: 1px solid #ced4da; 
+    background: #fff; 
+    /* Đã tăng padding-left lên 24px để chừa chỗ cho dấu check */
+    padding: 8px 16px 8px 24px; 
+    border-radius: 4px; /* Bo góc nhẹ hơn giống ảnh mẫu */
+    cursor: pointer; 
+    font-size: 14px; 
+    font-weight: 500; 
+    color: #495057; 
+    transition: all 0.2s ease; 
+    position: relative; 
+    overflow: hidden; 
+}
+.variant-btn:hover { 
+    border-color: #ee4d2d; 
+    color: #ee4d2d; 
+    background: #fff; 
+}
+.variant-btn.active { 
+    border-color: #ee4d2d; 
+    color: #ee4d2d; 
+    background: #fff; 
+}
+/* Tinh chỉnh lại mảng tam giác chứa dấu check góc trái */
+/* =========================================================
+   Giao diện nút chọn Phân loại chuẩn
+   ========================================================= */
+.variant-btn { 
+    border: 1px solid #e0e0e0; 
+    background: #fff; 
+    padding: 8px 16px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    color: #333; 
+    transition: all 0.2s ease; 
+    position: relative; 
+    /* Bỏ overflow: hidden để ::before có thể hiển thị tự do nếu cần */
+}
+.variant-btn:hover { 
+    border-color: #ee4d2d; 
+    color: #ee4d2d; 
+}
+.variant-btn.active { 
+    border-color: #ee4d2d; 
+    color: #ee4d2d; 
+}
+
+/* Tạo mảng tam giác màu cam ở góc bằng clip-path */
+.variant-btn.active::before { 
+    content: '✓'; 
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    width: 20px; 
+    height: 20px; 
+    background-color: #ee4d2d; 
+    color: white; 
+    font-size: 10px;
+    line-height: 25px; /* Căn chỉnh vị trí dọc của dấu ✓ */
+    text-align: right; 
+    padding-right: 2px; /* Căn chỉnh vị trí ngang của dấu ✓ */
+    clip-path: polygon(100% 0, 100% 100%, 0 100%); /* Cắt thành tam giác */
+}
+
+/* =========================================================
+   Trạng thái nút Phân loại ĐÃ HẾT HÀNG (Màu xám)
+   ========================================================= */
+.variant-btn.out-of-stock {
+    background-color: #f5f5f5;
+    color: #b5b5b5;
+    border-color: #e0e0e0;
+}
+
+.variant-btn.out-of-stock:hover {
+    background-color: #ebebeb;
+    color: #a0a0a0;
+    border-color: #d6d6d6;
+}
+
+/* Đổi màu dấu check thành xám nếu cố tình bấm chọn mẫu hết hàng */
+.variant-btn.out-of-stock.active {
+    border-color: #b5b5b5;
+    color: #888;
+}
+.variant-btn.out-of-stock.active::before {
+    background-color: #b5b5b5;
+}
+
+/* Nút Cuộn */
+.scroll-top-btn { position: fixed; bottom: 30px; right: 30px; background-color: #ffc107; color: #000; width: 45px; height: 45px; border-radius: 50%; display: none; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1050; text-decoration: none; }
+.scroll-top-btn:hover { background-color: #e0a800; color: #000; }
+
+/* Custom Header E-commerce Style */
+.ecommerce-header { position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.search-bar-wrapper { max-width: 600px; width: 100%; margin: 0 auto; }
+.search-input { border: 2px solid #ffc107; border-radius: 6px 0 0 6px !important; padding: 10px 15px; font-size: 15px; }
+.search-input:focus { box-shadow: none; border-color: #e0a800; }
+.search-btn { border-radius: 0 6px 6px 0 !important; padding: 10px 25px; background-color: #ffc107; color: #000; border: 2px solid #ffc107; }
+.search-btn:hover { background-color: #e0a800; border-color: #e0a800; }
+
+/* Sub-navbar (Thanh danh mục) */
+.sub-navbar { background-color: #2c3e50; border-top: 1px solid #444; }
+
+/* Chỉnh lại padding để khoảng cách chữ gần lại vừa phải */
+.custom-nav-link { 
+    color: #f8f9fa; 
+    font-weight: 600; 
+    /* Đổi 35px thành 65px. Đây là khoảng cách khoảng trắng 2 bên của mỗi chữ */
+    padding: 12px 65px; 
+    transition: all 0.2s ease; 
+    border-bottom: 3px solid transparent; 
+}
+/* Chỉnh lại padding để dãn khoảng cách các chữ ra vừa chạm 2 vạch đỏ của bạn */
+.custom-nav-link:hover, .custom-nav-link.active { 
+    color: #ffc107; 
+    background-color: rgba(255, 255, 255, 0.05); 
+    padding: 12px 75px;
+    transition: all 0.2s ease;
+    border-bottom: 3px solid #ffc107; 
+}
+
+/* Tạo vạch ngăn cách màu vàng giữa các ô */
+.nav-item {
+    position: relative;
+}
+/* Áp dụng vạch cho tất cả thẻ li TRỪ thẻ cuối cùng */
+.nav-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%); /* Căn vạch nằm chính giữa chiều dọc */
+    height: 18px; /* Chiều dài của vạch */
+    width: 2px; /* Độ dày của vạch */
+    background-color: #ffc107; /* Màu vàng */
+}
+/* Custom Buttons trong trang Chi tiết */
+.btn-add-cart {
+    background-color: #ffefe8;
+    color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+    transition: background-color 0.2s;
+}
+.btn-add-cart:hover {
+    background-color: #ffe6db;
+    color: #ee4d2d;
+}
+
+.btn-buy-now {
+    background-color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+    transition: background-color 0.2s;
+}
+.btn-buy-now:hover {
+    background-color: #d73211;
+}
+
+/* Đảm bảo ảnh Thumbnail canh trái giống yêu cầu */
+#detailThumbnails {
+    justify-content: flex-start !important;
+    padding: 0 5px;
+}
+/* =========================================================
+   HIỆU ỨNG THU GỌN / XEM THÊM NỘI DUNG (Bài 3 - Box Model)
+   ========================================================= */
+.content-wrapper {
+    position: relative;
+    max-height: 250px; /* Chiều cao mặc định khi bị thu gọn */
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+
+.content-wrapper.expanded {
+    max-height: 2000px; /* Mở rộng hết cỡ khi bấm nút */
+}
+
+/* Lớp sương mù che mờ chữ phía dưới */
+.content-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Ẩn sương mù khi mở rộng */
+.content-wrapper.expanded .content-overlay {
+    opacity: 0;
+}
+
+.btn-toggle-content {
+    background: none;
+    border: none;
+    color: #ee4d2d;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+}
+.btn-toggle-content:hover { text-decoration: underline; }
+
+/* =========================================================
+   Tùy chỉnh khu vực chọn Số lượng (Input + Buttons)
+   ========================================================= */
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.qty-btn {
+    background: #fff;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.qty-btn:hover {
+    color: #ee4d2d;
+}
+
+.qty-input {
+    width: 40px;
+    height: 32px;
+    border: none;
+    border-left: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    /* Xóa mũi tên tăng giảm mặc định của input type="number" */
+    -mo-animation: textfield; 
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* =========================================================
+   Thanh Lọc Thương Hiệu Hiện Đại (Pill UI)
+   ========================================================= */
+.brand-filter-bar {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.brand-filter-btn {
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 20px; /* Bo tròn hoàn toàn tạo hình viên thuốc */
+    padding: 6px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none;
+}
+
+.brand-filter-btn:hover {
+    border-color: #ee4d2d;
+    color: #ee4d2d;
+}
+
+/* Trạng thái khi nút đang được chọn (Sáng lên) */
+.brand-filter-btn.active {
+    background-color: #ee4d2d;
+    border-color: #ee4d2d;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(238, 77, 45, 0.2); /* Đổ bóng màu cam nhẹ */
+}
+/* =========================================================
+   Giao diện Footer Thông Tin Liên Hệ
+   ========================================================= */
+.custom-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #eaeaea;
+    color: #333;
+    margin-top: 60px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+/* Tiêu đề Logo to, dày, màu cam */
+.footer-logo {
+    font-family: 'Alfa Slab One', Impact, sans-serif; /* Sử dụng phông Google mới tải */
+    font-weight: normal; /* Phông này bản chất đã cực kỳ dày rồi nên để normal */
+    color: #ed4d2d; 
+    font-size: 32px;
+    letter-spacing: 2px; /* Tăng khoảng cách chữ cho giống ảnh */
+    text-transform: uppercase;
+}
+
+/* Tiêu đề các cột chữ dày, màu đen */
+.footer-heading {
+    font-family: 'Alfa Slab One', Impact, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+.footer-contact-list {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-icon {
+    font-size: 18px;
+    display: inline-block;
+    width: 25px;
+    text-align: center;
+}
+
+.footer-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: #ed4d2d;
+}
+
+/* Đường kẻ ngang phân cách */
+.footer-divider {
+    border-top: 2px solid #bbb; /* Tăng độ dày lên 2px và dùng màu xám đậm hơn */
+    opacity: 1; /* Xóa hiệu ứng mờ mặc định của thẻ hr */
+    margin-top: 30px;
+    margin-bottom: 12px; /* Giảm khoảng cách này (từ 20px xuống 12px) để chữ xích lên trên */
+}
+
+/* Chữ bản quyền cuối trang */
+.footer-copyright {
+    font-size: 14px;
+    color: #555;
+    text-align: center; /* Ép căn giữa bằng CSS cho chắc chắn */
+    padding-bottom: 15px; /* Thêm tí đệm ở dưới cùng cho web dễ thở */
+}
+
+/* =========================================================
+   Tùy chỉnh Giao diện Giỏ hàng (Màu Cam Gaming)
+   ========================================================= */
+/* Phóng to và đổi màu Checkbox mặc định */
+.cart-checkbox {
+    width: 22px;
+    height: 22px;
+    accent-color: #ee4d2d; /* Chuyển màu xanh mặc định thành Cam */
+    cursor: pointer;
+}
+
+/* Nút Áp dụng Voucher */
+.btn-voucher {
+    background-color: #ee4d2d;
+    color: white;
+    border: 1px solid #ee4d2d;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.btn-voucher:hover {
+    background-color: #d73211;
+    color: white;
+}
+
+/* Hộp viền đứt đoạn cho khu vực Voucher */
+.voucher-box {
+    border: 2px dashed #ee4d2d;
+    background-color: #fff9f7;
+    padding: 15px;
+    border-radius: 8px;
+}
