@@ -4,47 +4,11 @@
 // DỮ LIỆU SẢN PHẨM CHUẨN (ĐÃ BỔ SUNG ĐẦY ĐỦ MODELS & SWITCHES CHO TẤT CẢ)
 var products = [
     { 
-        id: 1, 
-        name: "Bàn phím cơ Aula F75", 
-        brand: "Aula", 
-        category: "keyboard", 
-        oldPrice: 1740000, 
-        price: 1218000, 
-        connection: "3 Mode (Type-C, 2.4G, Bluetooth)", 
-        structure: "Gasket Mount, Mạch xuôi", 
-        desc: "Siêu phẩm Aula F75 quốc dân với đầy đủ mọi tùy chọn Mod và ngoại hình đẹp nhất.", 
-        images: [
-            "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800", 
-            "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800", 
-            "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800"
-        ],
-        // MẪU MÃ: Khai báo các phiên bản màu sắc (Thêm priceAdd)
-        models: [ 
-            { id: "m1", name: "Màu Đen", imgIndex: 0, priceAdd: 0 }, 
-            { id: "m2", name: "Màu Trắng", imgIndex: 1, priceAdd: 50000 }, // Màu trắng đắt hơn 50k
-            { id: "m3", name: "Bản Limited", imgIndex: 2, priceAdd: 150000 } // Bản giới hạn đắt hơn 150k
-        ],
-        switches: [ 
-            { id: "s1", name: "Mod trầm", priceAdd: 0 }, 
-            { id: "s2", name: "Mod silent (im lặng)", priceAdd: 200000 } 
-        ],
-        fullSpecs: [
-            { label: "Thương hiệu", value: "Aula" },
-            { label: "Model", value: "F75" },
-            { label: "Layout", value: "75% (80 Phím + Núm vặn kim loại)" },
-            { label: "Kết nối", value: "3 Mode: Type-C / Bluetooth / 2.4G" },
-            { label: "Cấu trúc", value: "Gasket Mount, Mạch xuôi" },
-            { label: "Pin", value: "4000 mAh" }
-        ],
-        hashtags: "#aulaf75 #banphimco #banphimcustom #tungcustom"
-    },
-
-    { 
-        id: 99, // QUAN TRỌNG: Mỗi sản phẩm phải có 1 số ID riêng biệt (không trùng nhau)
+        id: 1, // QUAN TRỌNG: Mỗi sản phẩm phải có 1 số ID riêng biệt (không trùng nhau)
         name: "Bàn phím cơ Aula F75 3 Mode", 
         brand: "Aula", // Phải gõ đúng 1 trong các chữ: Aula, Leobog, Lingbao, Xinmeng, Weikav
         category: "keyboard", // Danh mục: keyboard (bàn phím), switch, keycap
-        oldPrice: 1500000, // Giá gốc (Viết số liền nhau, không chấm phẩy)
+        oldPrice: 1450000, // Giá gốc (Viết số liền nhau, không chấm phẩy)
         price: 550000, // Giá bán thực tế
         connection: "Type-C / 2.4G / Bluetooth", 
         structure: "Gasket Mount, Mạch xuôi", 
@@ -89,103 +53,169 @@ var products = [
             { label: "Keycap", value: "Nhựa PBT Double-shot" },
             { label: "Dung lượng Pin", value: "4000 mAh" }
         ],
-        hashtags: "#banphimco #lingbao #phuckeyboard #tungcustom"
+        hashtags: "#banphimco #aula #phuckeyboard #ngohuuphuc"
     }, // <-- DẤU PHẨY Ở CUỐI CỰC KỲ QUAN TRỌNG ĐỂ KẾT NỐI VỚI SP TIẾP THEO
+    { 
+        id: 2, // QUAN TRỌNG: Mỗi sản phẩm phải có 1 số ID riêng biệt (không trùng nhau)
+        name: "Bàn phím cơ Aula S75 Pro 3 Mode", 
+        brand: "Aula", // Phải gõ đúng 1 trong các chữ: Aula, Leobog, Lingbao, Xinmeng, Weikav
+        category: "keyboard", // Danh mục: keyboard (bàn phím), switch, keycap
+        oldPrice: 1500000, // Giá gốc (Viết số liền nhau, không chấm phẩy)
+        price: 630000, // Giá bán thực tế
+        connection: "Type-C / 2.4G / Bluetooth", 
+        structure: "Gasket Mount, Mạch xuôi", 
+        desc: "Đoạn văn mô tả chi tiết sản phẩm của bạn. Viết càng hay chốt đơn càng dễ...", 
+        
+        // MẢNG ẢNH: Link ảnh số 1 là ảnh mặc định.
+        images: [
+            "anh-phim/aula-s75-den-hong.png", // Ảnh vị trí số 0
+            "anh-phim/aula-s75-trang-xanh.png",
+            "anh-phim/aula-s75-hong-dao.png",
+            "anh-phim/aula-s75-heo-hong.png",
+            "anh-phim/aula-s75-capybara.png",
+            "anh-phim/aula-s75-gau-tuyet.png",
+            "anh-phim/aula-s75-shinchan.png",
+            "anh-phim/aula-s75-son.png",
+            "anh-phim/aula-s75-phi-hanh-gia.png",
+            "anh-phim/aula-s75-banh-mi.png",
+            "anh-phim/aula-s75-yetii.png" // Ảnh vị trí số 1
+        ],
+        
+        // MẪU MÃ: Khai báo các phiên bản màu sắc
+        models: [ 
+            { id: "m1", name: "Đen Hồng", imgIndex: 0, priceAdd: 0, stock:2 }, // imgIndex: 0 nghĩa là lấy ảnh đầu tiên ở trên
+            { id: "m2", name: "Xanh Băng", imgIndex: 1, priceAdd: 30000, stock:5 }, 
+            { id: "m3", name: "Hồng Đào", imgIndex: 2, priceAdd: 75000, Stock: 10 }, 
+            { id: "m4", name: "Heo Hồng", imgIndex: 3, priceAdd: 175000, stock:7 },
+            { id: "m5", name: "Caoybara", imgIndex: 4, priceAdd: 162000, inStock: false },
+            { id: "m6", name: "Gấu Tuyết", imgIndex: 5, priceAdd: 160000, stock: 3 },
+            { id: "m7", name: "ShinChan", imgIndex: 6, priceAdd: 175000, stock: 8 },
+            { id: "m8", name: "Son Lỏng", imgIndex: 7, priceAdd: 100000, inStock: false },
+            { id: "m9", name: "Phi Hành Gia", imgIndex: 8, priceAdd: 185000, inStock: false},
+            { id: "m10", name: "Bánh Mì", imgIndex: 9, priceAdd: 170000, stock: 15 },
+            { id: "m11", name: "Yeti", imgIndex: 10, priceAdd: 165000, stock: 1 },
+        ],
+        
+        // KIỂU MOD / SWITCH: Khai báo giá tiền cộng thêm
+        switches: [ 
+            { id: "s1", name: "Switch hãng mặc định", priceAdd: 0}, 
+            { id: "s2", name: "Mod Full Lube + Lót Foam", priceAdd: 0}, // Cộng thêm 250k vào giá bán
+            { id: "s3", name: "Mod Silent", priceAdd: 0}
+        ],
+        
+        // BẢNG THÔNG SỐ CHI TIẾT
+        fullSpecs: [
+            { label: "Thương hiệu", value: "Aula" },
+            { label: "Model", value: "Aula F75" },
+            { label: "Layout", value: "75% (80 phím)" },
+            { label: "Keycap", value: "Nhựa PBT Double-shot" },
+            { label: "Dung lượng Pin", value: "4000 mAh" }
+        ],
+        hashtags: "#banphimco #aula #phuckeyboard #ngohuuphuc"
+    },
 
     { 
-        id: 2, 
-        name: "Bàn phím Xinmeng S75 Pro", 
-        brand: "Xinmeng", 
-        category: "keyboard", 
-        oldPrice: 1680000, 
-        price: 1176000, 
-        connection: "3 Mode kết nối", 
-        structure: "Layout 75%, Màn hình TFT", 
-        desc: "Tích hợp màn hình thông minh hiển thị GIF cực kỳ sắc nét. Trải nghiệm gõ êm ái nhờ cấu trúc Gasket mount và full foam cách âm.", 
+        id: 3, // QUAN TRỌNG: Mỗi sản phẩm phải có 1 số ID riêng biệt (không trùng nhau)
+        name: "Bàn phím cơ Lingbao K98 3 Mode", 
+        brand: "Lingbao", // Phải gõ đúng 1 trong các chữ: Aula, Leobog, Lingbao, Xinmeng, Weikav
+        category: "keyboard", // Danh mục: keyboard (bàn phím), switch, keycap
+        oldPrice: 1200000, // Giá gốc (Viết số liền nhau, không chấm phẩy)
+        price: 500000, // Giá bán thực tế
+        connection: "Type-C / 2.4G / Bluetooth", 
+        structure: "Gasket Mount, Mạch xuôi", 
+        desc: "Đoạn văn mô tả chi tiết sản phẩm của bạn. Viết càng hay chốt đơn càng dễ...", 
+        
+        // MẢNG ẢNH: Link ảnh số 1 là ảnh mặc định.
         images: [
-            "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=800"
+            "anh-phim/lingbao-k98-do-den.png", // Ảnh vị trí số 0
+            "anh-phim/lingbao-k98-den-hong.png",
+            "anh-phim/lingbao-k98-trang-xanh.png",
+            "anh-phim/lingbao-k98-cho-nho.png",
+            "anh-phim/lingbao-k98-alinnyia.png",
+            "anh-phim/lingbao-k98-lucynirel.jpg",
+            "anh-phim/lingbao-k98pro-do.png",
+            "anh-phim/lingbao-k98pro-evening.png" // Ảnh vị trí số 1
         ],
-        // ĐÃ BỔ SUNG MẢNG MODELS VÀ SWITCHES ĐỂ KHÔNG BỊ LỖI
+        
+        // MẪU MÃ: Khai báo các phiên bản màu sắc
         models: [ 
-            { id: "m1", name: "S75 Pro Mặc định", imgIndex: 0 }
+            { id: "m1", name: "Đỏ Đen 5000mAh", imgIndex: 0, priceAdd: 0, stock:2 }, // imgIndex: 0 nghĩa là lấy ảnh đầu tiên ở trên
+            { id: "m2", name: "Đen Hồng 10000mAh", imgIndex: 1, priceAdd: 30000, stock:5 }, 
+            { id: "m3", name: "Trắng Xanh 10000mAh", imgIndex: 2, priceAdd: 75000, Stock: 10 }, 
+            { id: "m4", name: "Chó Nhỏ 10000mAh", imgIndex: 3, priceAdd: 175000, stock:7 },
+            { id: "m5", name: "Alinnyia 10000mAh", imgIndex: 4, priceAdd: 162000, inStock: false },
+            { id: "m6", name: "Lucynirel 100000mAh", imgIndex: 5, priceAdd: 160000, stock: 3 },
+            { id: "m7", name: "K98 Pro Đỏ", imgIndex: 6, priceAdd: 175000, stock: 8 },
+            { id: "m8", name: "K98 Pro Evening", imgIndex: 7, priceAdd: 100000, inStock: false }
         ],
+        
+        // KIỂU MOD / SWITCH: Khai báo giá tiền cộng thêm
         switches: [ 
-            { id: "s1", name: "Switch hãng", priceAdd: 0 },
-            { id: "s2", name: "Mod Silent", priceAdd: 200000 }
+            { id: "s1", name: "Switch hãng mặc định", priceAdd: 0}, 
+            { id: "s2", name: "Mod Full Lube + Lót Foam", priceAdd: 0}, // Cộng thêm 250k vào giá bán
+            { id: "s3", name: "Mod Silent", priceAdd: 0}
         ],
+        
+        // BẢNG THÔNG SỐ CHI TIẾT
         fullSpecs: [
-            { label: "Thương hiệu", value: "Xinmeng" },
-            { label: "Model", value: "S75 Pro" },
-            { label: "Layout", value: "75% (82 Phím + 1 Núm xoay kim loại)" },
-            { label: "Cấu trúc", value: "Gasket Mount / Plate PC Flex-cut / Full Foam" },
-            { label: "Mạch", value: "Hotswap 5 pin, Mạch xuôi" },
-            { label: "Pin", value: "6000 mAh (Sử dụng bền bỉ nhiều tuần)" }
+            { label: "Thương hiệu", value: "Aula" },
+            { label: "Model", value: "Aula F75" },
+            { label: "Layout", value: "75% (80 phím)" },
+            { label: "Keycap", value: "Nhựa PBT Double-shot" },
+            { label: "Dung lượng Pin", value: "4000 mAh" }
         ],
-        hashtags: "#xinmeng #xinmengs75pro #s75pro #banphimco #tungcustom"
+        hashtags: "#banphimco #aula #phuckeyboard #ngohuuphuc"
     },
+
     { 
-        id: 3, 
-        name: "Switch Leobog Ice Pink Linear (Hộp 35)", 
-        brand: "Leobog", 
-        category: "switch", 
-        oldPrice: 220000, 
-        price: 165000, 
-        connection: "MX 5 Pin", 
-        structure: "Linear 42g", 
-        desc: "Tản LED siêu sáng, gõ êm mượt. Sản phẩm cực kỳ thích hợp cho góc setup hệ RGB rực rỡ.", 
+        id: 4, // QUAN TRỌNG: Mỗi sản phẩm phải có 1 số ID riêng biệt (không trùng nhau)
+        name: "Bàn phím cơ Weikav Nut75 3 Mode", 
+        brand: "Weikav", // Phải gõ đúng 1 trong các chữ: Aula, Leobog, Lingbao, Xinmeng, Weikav
+        category: "keyboard", // Danh mục: keyboard (bàn phím), switch, keycap
+        oldPrice: 3200000, // Giá gốc (Viết số liền nhau, không chấm phẩy)
+        price: 1500000, // Giá bán thực tế
+        connection: "Type-C / 2.4G / Bluetooth", 
+        structure: "Gasket Mount, Mạch xuôi", 
+        desc: "Đoạn văn mô tả chi tiết sản phẩm của bạn. Viết càng hay chốt đơn càng dễ...", 
+        
+        // MẢNG ẢNH: Link ảnh số 1 là ảnh mặc định.
         images: [
-            "https://images.unsplash.com/photo-1563297007-0686b7003af7?w=800"
+            "anh-phim/weikav-nut75-cam-ta-thep.png", // Ảnh vị trí số 0
+            "anh-phim/weikav-nut75-do-ta-thep.png",
+            "anh-phim/weikav-nut75-trang-ta-thep.png",
+            "anh-phim/weikav-nut75-trang-ta-guong.png",
+            "anh-phim/weikav-nut75-xanh-ta-thep.png",
+            "anh-phim/weikav-nut75-xanh-ta-guong.png",
+ // Ảnh vị trí số 1
         ],
-        // ĐÃ BỔ SUNG MẢNG MODELS VÀ SWITCHES ĐỂ KHÔNG BỊ LỖI
+        
+        // MẪU MÃ: Khai báo các phiên bản màu sắc
         models: [ 
-            { id: "m1", name: "Hộp 35 Switch", imgIndex: 0 }
+            { id: "m1", name: "Cam Tạ Thép", imgIndex: 0, priceAdd: 0, stock:2 }, // imgIndex: 0 nghĩa là lấy ảnh đầu tiên ở trên
+            { id: "m2", name: "Đỏ Tạ Thép", imgIndex: 1, priceAdd: 30000, stock:5 }, 
+            { id: "m3", name: "Trắng Tạ Thép", imgIndex: 2, priceAdd: 75000, Stock: 10 }, 
+            { id: "m4", name: "Trắng Tạ Gương", imgIndex: 3, priceAdd: 175000, stock:7 },
+            { id: "m5", name: "Xanh Tạ Thép", imgIndex: 4, priceAdd: 162000, inStock: false },
+            { id: "m6", name: "Xanh Tạ Gương", imgIndex: 5, priceAdd: 160000, stock: 3 },
         ],
+        
+        // KIỂU MOD / SWITCH: Khai báo giá tiền cộng thêm
         switches: [ 
-            { id: "s1", name: "Lube sẵn", priceAdd: 0 }
+            { id: "s1", name: "Switch hãng mặc định", priceAdd: 0}, 
+            { id: "s2", name: "Mod Full Lube + Lót Foam", priceAdd: 0}, // Cộng thêm 250k vào giá bán
+            { id: "s3", name: "Mod Silent", priceAdd: 0}
         ],
+        
+        // BẢNG THÔNG SỐ CHI TIẾT
         fullSpecs: [
-            { label: "Thương hiệu", value: "Leobog" },
-            { label: "Phân loại", value: "Linear Switch" },
-            { label: "Lực nhấn", value: "42g ± 3g" },
-            { label: "Hành trình", value: "3.7mm" },
-            { label: "Tuổi thọ", value: "50 triệu lần nhấn" }
+            { label: "Thương hiệu", value: "Aula" },
+            { label: "Model", value: "Aula F75" },
+            { label: "Layout", value: "75% (80 phím)" },
+            { label: "Keycap", value: "Nhựa PBT Double-shot" },
+            { label: "Dung lượng Pin", value: "4000 mAh" }
         ],
-        hashtags: "#switch #leobog #icepink #linear #tungcustom"
+        hashtags: "#banphimco #aula #phuckeyboard #ngohuuphuc"
     },
-    { 
-        id: 10, 
-        name: "Bàn phím cơ Weikav Record Alice Nhôm CNC", 
-        brand: "Weikav", 
-        category: "keyboard", 
-        oldPrice: 1900000, 
-        price: 1550000, 
-        connection: "Cáp Type-C rời", 
-        structure: "Leaf Spring Gasket, Mạch xuôi", 
-        desc: "Thiết kế layout Alice công thái học, case nhôm nguyên khối siêu nặng giúp âm gõ cực kỳ trầm và chắc tay.", 
-        images: [
-            "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800",
-            "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800",
-            "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?w=800"
-        ],
-        models: [ 
-            { id: "m1", name: "Màu Trắng", imgIndex: 0 }, 
-            { id: "m2", name: "Màu Đen", imgIndex: 1 }, 
-            { id: "m3", name: "Màu Hồng", imgIndex: 2 } 
-        ],
-        switches: [ 
-            { id: "s1", name: "Switch mặc định", priceAdd: 0 }, 
-            { id: "s2", name: "Mod KTT Kang White (Nổ to)", priceAdd: 150000 },
-            { id: "s3", name: "Mod Outemu Silent (Im lặng)", priceAdd: 250000 } 
-        ],
-        fullSpecs: [
-            { label: "Thương hiệu", value: "Weikav" },
-            { label: "Model", value: "Record Alice" },
-            { label: "Case", value: "Nhôm CNC nguyên khối" },
-            { label: "Layout", value: "Alice (Công thái học)" },
-            { label: "Mạch", value: "Hotswap 5 pin, Mạch xuôi" }
-        ],
-        hashtags: "#weikav #alice #banphimnhom #customkeyboard #tungcustom"
-    }
 ];
 
 var cart = [];
@@ -227,7 +257,7 @@ function renderProducts() {
             (p.name.toLowerCase().indexOf(keyword) !== -1)) {
             
             var discount = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
-            html += '<div class="col-sm-6 col-md-4 col-lg-3"><div class="product-card"><div><span class="brand-tag">'+p.brand+'</span><span class="discount-badge">-'+discount+'%</span><div class="product-img-wrapper"><a href="detail.html?id='+p.id+'"><img src="'+p.images[0]+'"></a></div><h3 class="product-title"><a href="detail.html?id='+p.id+'" class="text-dark text-decoration-none">'+p.name+'</a></h3></div><div class="mt-3"><div class="mb-2"><span class="text-danger fw-bold fs-5 me-2">'+formatVND(p.price)+'</span><span class="text-muted text-decoration-line-through small">'+formatVND(p.oldPrice)+'</span></div><a href="detail.html?id='+p.id+'" class="btn btn-warning fw-bold w-100">🛒 Mua</a></div></div></div>';
+            html += '<div class="col-sm-6 col-md-4 col-lg-4"><div class="product-card"><div><span class="brand-tag">'+p.brand+'</span><span class="discount-badge">-'+discount+'%</span><div class="product-img-wrapper"><a href="detail.html?id='+p.id+'"><img src="'+p.images[0]+'"></a></div><h3 class="product-title"><a href="detail.html?id='+p.id+'" class="text-dark text-decoration-none">'+p.name+'</a></h3></div><div class="mt-3"><div class="mb-2"><span class="text-danger fw-bold fs-5 me-2">'+formatVND(p.price)+'</span><span class="text-muted text-decoration-line-through small">'+formatVND(p.oldPrice)+'</span></div><a href="detail.html?id='+p.id+'" class="btn btn-warning fw-bold w-100">🛒 Mua</a></div></div></div>';
         }
     }
     container.innerHTML = html || '<p class="text-muted w-100 text-center py-4">Không tìm thấy sản phẩm phù hợp.</p>';
